@@ -13,6 +13,8 @@ public class Director {
     private String Education;
     private String country;
     public String companyName;
+    public Director(){
+    }
     public Director(Integer id, String name, String post, String remarks,
                     String otherDirectorships, String education, String country , String companyName)
     {

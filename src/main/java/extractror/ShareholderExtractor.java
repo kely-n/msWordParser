@@ -1,7 +1,6 @@
 package extractror;
 /* Dev Kelyn created the file on 2021-02-22 inside the package - extractror */
 
-import models.BusinessDetails;
 import models.Company;
 import models.Shareholder;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
@@ -44,6 +43,7 @@ public class ShareholderExtractor implements Extractor {
             }
         }
         company.setShareholders(shareholders);
-        return new businessDetailsExtractor().extract(company, tables, 2);
+        return new businessDetailsExtractor()
+                .extract(company, tables, 2);
     }
 }

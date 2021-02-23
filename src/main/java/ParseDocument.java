@@ -18,9 +18,9 @@ import java.util.List;
 public class ParseDocument {
     public static void main(String[] args) throws IOException {
 
-        String fileName = "/home/sheis/Downloads/SOCIEDADE_NACIONAL_-Sample3.docx";
-            ///home/sheis/Downloads/SOCIEDADE_NACIONAL_-Sample3.docx
-            ///home/sheis/Documents/example.docx
+        String fileName = "/home/sheis/Downloads/Sample.docx";
+//        String fileName = "/home/sheis/Downloads/DANGOTE_CEMENT-sample2.docx";
+//        String fileName = "/home/sheis/Downloads/SOCIEDADE_NACIONAL_-Sample3.docx";
 
         int j = 0;
         try {

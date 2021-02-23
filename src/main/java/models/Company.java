@@ -311,6 +311,7 @@ public class Company {
                 ", tradeName='" + tradeName + '\'' +
                 ", nationalId='" + nationalId + '\'' +
                 ", vatNumber='" + vatNumber + '\'' +
+                ", directors='" + directors + '\'' +
                 ", businessDetails='" + businessDetails + '\'' +
                 ", shareholders='" + shareholders + '\'' +
                 '}';

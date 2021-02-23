@@ -3,12 +3,10 @@ package extractror;
 
 import models.BusinessDetails;
 import models.Company;
-import models.Shareholder;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableCell;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +28,6 @@ public class businessDetailsExtractor implements Extractor {
             for (int i = 0; i < table.getNumberOfRows(); i++) {
                 XWPFTableRow row = table.getRow(i);
                 List<XWPFTableCell> cells = row.getTableCells();
-                System.out.println(cells.get(0).getText() + " : " + cells.size());
                 switch (cells.get(0).getText().replace(" ", "")) {
                     case "COMPANYREPORTED:":
                         businessDetails.setCompanyName(cells.get(1).getText().toUpperCase());
@@ -52,6 +49,9 @@ public class businessDetailsExtractor implements Extractor {
                         break;
                     case "BusinessActivities":
                         businessDetails.setBusinessActivities(cells.get(1).getText());
+                        if(businessDetails.getBusinessActivities().isEmpty()){//if empty, then get activities from next line
+                            businessDetails.setBusinessActivities(table.getRow(i + 1).getTableCells().get(0).getText());
+                        }
                         break;
                     case "Buyingterms":
                         businessDetails.setBuyingTerms(cells.get(1).getText());
@@ -108,6 +108,7 @@ public class businessDetailsExtractor implements Extractor {
         }
         company.setBusinessDetails(businessDetails);
 
-        return company;
+        return new DirectorExtractor()
+                .extract(company, tables, tableNumber);
     }
 }
